@@ -56,14 +56,12 @@ impl<T: PartialEq + Debug> LinkedList<T> {
 
     /// 删除节点
     pub fn remove(&mut self, val: T) -> bool {
-        let mut head: &mut Option<Box<Node<T>>> = &mut self.head;
-        let mut is_head = true;
+        let mut head = &mut self.head;
+
         while let Some(ref mut node) = head {
             if node.data == val {
-                if is_head {
-                    self.head = node.next.take();
-                    return true
-                }
+                self.head = node.next.take();
+                return true
             }
 
             if let Some(ref mut next) = node.next {
@@ -72,7 +70,7 @@ impl<T: PartialEq + Debug> LinkedList<T> {
                     return true
                 }
             }
-            is_head = false;
+
             head = &mut node.as_mut().next;
         }
         false
