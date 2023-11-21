@@ -54,6 +54,18 @@ impl<T: PartialEq + Debug> LinkedList<T> {
         self
     }
 
+    /// 查找节点
+    pub fn find_node(&mut self, val: T) -> Option<&mut Box<Node<T>>> {
+        let mut head = &mut self.head;
+        while let Some(ref mut node) = head {
+            if node.data == val {
+                return Some(node);
+            }
+            head = &mut node.as_mut().next;
+        }
+        None
+    }
+
     /// 删除节点
     pub fn remove(&mut self, val: T) -> bool {
         let mut head = &mut self.head;
@@ -61,13 +73,13 @@ impl<T: PartialEq + Debug> LinkedList<T> {
         while let Some(ref mut node) = head {
             if node.data == val {
                 self.head = node.next.take();
-                return true
+                return true;
             }
 
             if let Some(ref mut next) = node.next {
                 if next.data == val {
                     node.next = next.next.take();
-                    return true
+                    return true;
                 }
             }
 
