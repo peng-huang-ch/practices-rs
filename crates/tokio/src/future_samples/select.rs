@@ -1,5 +1,7 @@
-use std::pin::Pin;
-use std::task::{Context, Poll};
+use std::{
+    pin::Pin,
+    task::{Context, Poll},
+};
 
 use futures::Future;
 use tokio::sync::oneshot;
@@ -36,8 +38,7 @@ impl Future for MySelect {
 #[cfg(test)]
 mod test {
     use super::*;
-    use tokio::net::TcpStream;
-    use tokio::sync::oneshot;
+    use tokio::{net::TcpStream, sync::oneshot};
 
     #[tokio::main]
     #[test]

@@ -35,10 +35,7 @@ impl Future for TimerFuture {
 
 impl TimerFuture {
     pub fn new(duration: Duration) -> Self {
-        let shared_state = Arc::new(Mutex::new(SharedState {
-            completed: false,
-            waker: None,
-        }));
+        let shared_state = Arc::new(Mutex::new(SharedState { completed: false, waker: None }));
         // new tread pool
         let thread_pool = shared_state.clone();
         thread::spawn(move || {

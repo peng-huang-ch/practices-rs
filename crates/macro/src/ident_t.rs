@@ -1,6 +1,6 @@
 #[allow(unused_macros)]
 macro_rules! create_function {
-    ($fn_name: ident) => {
+    ($fn_name:ident) => {
         fn $fn_name() {
             println!("You called {:?}()", stringify!($fn_name));
         }
@@ -9,7 +9,7 @@ macro_rules! create_function {
 
 #[allow(unused_macros)]
 macro_rules! print_result {
-    ($expression: expr) => {
+    ($expression:expr) => {
         println!("{:?} = {:?}", stringify!($expression), $expression);
     };
 }

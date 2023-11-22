@@ -2,7 +2,7 @@
 
 fn factorial_recur(n: i32) -> i32 {
     if n == 0 {
-        return 1
+        return 1;
     }
     n * factorial_recur(n - 1)
 }

@@ -2,7 +2,7 @@
 
 fn exp_recur(n: i32) -> i32 {
     if n == 1 {
-        return 1
+        return 1;
     }
     exp_recur(n - 1) + exp_recur(n - 1) + 1
 }
